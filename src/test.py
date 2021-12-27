@@ -1,9 +1,7 @@
 import unittest
 
 from src.DiGraph import DiGraph
-from src.EdgeData import EdgeData
 from src.GraphAlgo import GraphAlgo
-from src.NodeData import NodeData
 
 
 class test(unittest.TestCase):

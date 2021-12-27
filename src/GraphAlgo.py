@@ -104,8 +104,6 @@ class GraphAlgo(GraphAlgoInterface):
             i = prev[i]
 
         prevlist.reverse()
-        print(prevlist)
-
         return dist[id2],prevlist
 
     def plot_graph(self) -> None:
