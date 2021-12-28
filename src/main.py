@@ -19,8 +19,9 @@ def check():
     ([1,3,4,2],3.5)
     """
     check0()
-    check1()
-    check2()
+    # check1()
+    # check2()
+    # check3()
 
 
 def check0():
@@ -38,12 +39,14 @@ def check0():
     g.add_edge(1, 3, 1.9)
     g.remove_edge(1, 3)
     g.add_edge(1, 3, 10)
+    print('==start==')
     print(g)  # prints the __repr__ (func output)
     print(g.get_all_v())  # prints a dict with all the graph's vertices.
     print(g.all_in_edges_of_node(1))
     print(g.all_out_edges_of_node(1))
     g_algo = GraphAlgo(g)
     print(g_algo.shortest_path(0, 3))
+    print('==FINISH==')
     g_algo.plot_graph()
 
 
@@ -53,7 +56,7 @@ def check1():
     :return:
     """
     g_algo = GraphAlgo()  # init an empty graph - for the GraphAlgo
-    file = "../data/T0.json"
+    file = "data/T0.json"
     g_algo.load_from_json(file)  # init a GraphAlgo from a json file
     print(g_algo.shortest_path(0, 3))
     print(g_algo.shortest_path(3, 1))
@@ -67,7 +70,7 @@ def check2():
       :return:
       """
     g_algo = GraphAlgo()
-    file = '../data/A5.json'
+    file = 'data/A5.json'
     g_algo.load_from_json(file)
     g_algo.get_graph().remove_edge(13, 14)
     g_algo.save_to_json(file + "_edited")

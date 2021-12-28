@@ -17,8 +17,6 @@ class test(unittest.TestCase):
     #     self.assertEqual(edge_a.get_dest(),1)
     #     self.assertEqual(edge_a.get_weight(),5)
 
-
-
     # def test_nodedata(self):
     #     node_a = NodeData(0,(1,1,0))
     #
@@ -42,15 +40,15 @@ class test(unittest.TestCase):
         self.assertTrue(graph.remove_node(0))
         graph.print_edges()
         print("edge removed ")
-        self.assertTrue(graph.remove_edge(1,2))
+        self.assertTrue(graph.remove_edge(1, 2))
         graph.print_edges()
         print("edge removed ")
-        self.assertTrue(graph.remove_edge(3,4))
+        self.assertTrue(graph.remove_edge(3, 4))
         graph.print_edges()
 
     def test_load(self):
         algo = GraphAlgo()
-        self.assertTrue(algo.load_from_json("A0.json"))
+        self.assertTrue(algo.load_from_json("data/A0.json"))
         algo.graph.print_nodes()
         algo.graph.print_edges()
 
@@ -70,26 +68,26 @@ class test(unittest.TestCase):
 
     def test_savenload(self):
         algo = GraphAlgo()
-        algo.load_from_json("A0.json")
+        algo.load_from_json("data/A0.json")
         algo.save_to_json("New0.json")
 
     def test_shortest(self):
         algo = GraphAlgo()
-        algo.graph.add_node(0,(1,1,1))
+        algo.graph.add_node(0, (1, 1, 1))
         algo.graph.add_node(1, (1, 1, 1))
         algo.graph.add_node(2, (1, 1, 1))
         algo.graph.add_node(3, (1, 1, 1))
         algo.graph.add_node(4, (1, 1, 1))
         algo.graph.add_node(5, (1, 1, 1))
 
-        algo.graph.add_edge(0,1,4)
+        algo.graph.add_edge(0, 1, 4)
         algo.graph.add_edge(0, 2, 2)
         algo.graph.add_edge(1, 2, 5)
         algo.graph.add_edge(1, 3, 10)
         algo.graph.add_edge(2, 4, 3)
         algo.graph.add_edge(4, 3, 4)
         algo.graph.add_edge(3, 5, 11)
-        print(algo.shortest_path(0,5))
+        print(algo.shortest_path(0, 5))
 
     # def test_stams(self):
         # pos = "1,2,3"
@@ -99,11 +97,6 @@ class test(unittest.TestCase):
         # dic[1] = 9
         # print(dic[1])
         # dic.pop(1)
-
-
-
-
-
 
 
 if __name__ == '__main__':
