@@ -29,7 +29,7 @@ class test(unittest.TestCase):
         self.assertTrue(graph.add_node(2, (1, 1, 0)))
         self.assertTrue(graph.add_node(3, (1, 1, 0)))
         self.assertTrue(graph.add_node(4, (1, 1, 0)))
-        graph.print_nodes()
+        graph.printnode_map()
         self.assertTrue(graph.add_edge(0, 1, 9))
         self.assertTrue(graph.add_edge(1, 2, 9))
         self.assertTrue(graph.add_edge(0, 2, 9))
@@ -48,9 +48,11 @@ class test(unittest.TestCase):
 
     def test_load(self):
         algo = GraphAlgo()
-        self.assertTrue(algo.load_from_json("data/A0.json"))
-        algo.graph.print_nodes()
+        self.assertTrue(algo.load_from_json("../data/A0.json"))
+        algo.graph.printnode_map()
         algo.graph.print_edges()
+
+
 
     def test_save(self):
         algo = GraphAlgo()
@@ -64,12 +66,12 @@ class test(unittest.TestCase):
         self.assertTrue(algo.graph.add_edge(0, 2, 9))
         self.assertTrue(algo.graph.add_edge(3, 4, 9))
         self.assertTrue(algo.graph.add_edge(1, 0, 9))
-        algo.save_to_json("test.json")
+        self.assertTrue(algo.save_to_json("test.json"))
 
     def test_savenload(self):
         algo = GraphAlgo()
-        algo.load_from_json("data/A0.json")
-        algo.save_to_json("New0.json")
+        self.assertTrue(algo.load_from_json("data/A0.json"))
+        self.assertTrue(algo.save_to_json("New0.json"))
 
     def test_shortest(self):
         algo = GraphAlgo()
@@ -87,17 +89,62 @@ class test(unittest.TestCase):
         algo.graph.add_edge(2, 4, 3)
         algo.graph.add_edge(4, 3, 4)
         algo.graph.add_edge(3, 5, 11)
-        print(algo.shortest_path(0, 5))
+        print(algo.shortest_path(3, 1)[0])
 
-    # def test_stams(self):
-        # pos = "1,2,3"
-        # pos_tuple = tuple(map(float, pos.split(',')))
-        # print("pos is ", pos_tuple)
-        # dic  = {}
-        # dic[1] = 9
-        # print(dic[1])
-        # dic.pop(1)
+    def test_tsp(self):
+        algo = GraphAlgo()
+        algo.graph.add_node(0, (1, 1, 1))
+        algo.graph.add_node(1, (1, 1, 1))
+        algo.graph.add_node(2, (1, 1, 1))
+        algo.graph.add_node(3, (1, 1, 1))
+        algo.graph.add_node(4, (1, 1, 1))
+        algo.graph.add_node(5, (1, 1, 1))
 
+        algo.graph.add_edge(0, 1, 4)
+        algo.graph.add_edge(0, 2, 2)
+        algo.graph.add_edge(1, 2, 5)
+        algo.graph.add_edge(1, 3, 10)
+        algo.graph.add_edge(2, 4, 3)
+        algo.graph.add_edge(4, 3, 4)
+        algo.graph.add_edge(3, 5, 11)
+
+        self.assertTrue(algo.TSP([0, 5]), ([0, 2, 4, 3, 5], 20))
+        algo.graph.remove_edge(3,5)
+        self.assertTrue(algo.TSP([0, 5]), ([], -1))
+
+        g = DiGraph()  # creates an empty directed graph
+
+        for n in range(5):
+            g.add_node(n)
+        g.add_edge(0, 1, 1)
+        g.add_edge(0, 4, 5)
+        g.add_edge(1, 0, 1.1)
+        g.add_edge(1, 2, 1.3)
+        g.add_edge(1, 3, 1.9)
+        g.add_edge(2, 3, 1.1)
+        g.add_edge(3, 4, 2.1)
+        g.add_edge(4, 2, .5)
+        algo = GraphAlgo(g)
+        print(algo.TSP([1,2,4]))
+
+
+    def test_center(self):
+        g = DiGraph()  # creates an empty directed graph
+        for n in range(5):
+            g.add_node(n)
+        g.add_edge(0, 1, 1)
+        g.add_edge(0, 4, 5)
+        g.add_edge(1, 0, 1.1)
+        g.add_edge(1, 2, 1.3)
+        g.add_edge(1, 3, 1.9)
+        g.add_edge(2, 3, 1.1)
+        g.add_edge(3, 4, 2.1)
+        g.add_edge(4, 2, .5)
+        algo = GraphAlgo(g)
+        print("center is ",algo.centerPoint())
+
+        # algo.load_from_json("../data/A1.json")
+        # self.assertTrue(algo.centerPoint(), 3)
 
 if __name__ == '__main__':
     unittest.main()
