@@ -30,20 +30,7 @@ The algorithms that we have implemented in the project are the following:
   
 
 
-Comparison of the previous assignment and this assignment in terms of time:
-(previous assignment vs this assignment)
 
-1k graph:
-
-  load() = 100ms vs 53ms , save() = 74ms vs 33 ms , center() = 16sec, 738ms 
-
- 10k graph:
-
-  load() = 820ms vs  634ms , save() = 648ms vs 289ms
-
- 100k:
-
-  load() = 23sec, 770ms vs 13sec, 574ms ,save() = 17sec, 479ms vs 8.102 
 
 
 
@@ -86,10 +73,25 @@ Comparison of the previous assignment and this assignment in terms of time:
     Create a visual representation of the graph in its current state. (GUI)
     @return None
 
+Comparison of the previous assignment and this assignment in terms of time:
+(previous assignment vs this assignment)
+
+1k graph:
+
+  load() = 100ms vs 53ms , save() = 74ms vs 33 ms , center() = 16sec, 738ms 
+
+ 10k graph:
+
+  load() = 820ms vs  634ms , save() = 648ms vs 289ms
+
+ 100k:
+
+  load() = 23sec, 770ms vs 13sec, 574ms ,save() = 17sec, 479ms vs 8.102 
 
 ![image](https://user-images.githubusercontent.com/74679553/147697578-b57498e7-f417-4d17-a71e-f0d8026a1e59.png)
 
-
+Specifications of the testing computer:
+i5 10th gen, 8gb ram. Ubuntu 20.04 OS.
 
 
 
