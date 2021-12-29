@@ -205,7 +205,7 @@ class GraphAlgo(GraphAlgoInterface):
                         to_closest_node = self.shortest_path(node_lst[i], node_lst[closest_node])[1]
                         current_path_cost = current_path_cost + self.shortest_path(node_lst[i],node_lst[closest_node])[0]
                         node_lst[i] = None
-                        ans.append(to_closest_node)
+                        ans.extend(to_closest_node)
                 i = closest_node
                 t = t + 1
             node_lst = copy.deepcopy(original)
@@ -213,8 +213,7 @@ class GraphAlgo(GraphAlgoInterface):
                 shortest_path = current_path_cost
                 temp = copy.deepcopy(ans)
             ans = []
-
-        for i in range(len(temp)-1):
+        for i in range(len(temp)-2):
             if temp[i] == temp[i+1]:
                 temp.pop(i)
 

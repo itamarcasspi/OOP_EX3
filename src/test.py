@@ -48,7 +48,7 @@ class test(unittest.TestCase):
 
     def test_load(self):
         algo = GraphAlgo()
-        self.assertTrue(algo.load_from_json("../data/A0.json"))
+        self.assertTrue(algo.load_from_json("data/A0.json"))
         algo.graph.printnode_map()
         algo.graph.print_edges()
 
@@ -142,6 +142,9 @@ class test(unittest.TestCase):
         self.assertEqual(algo.centerPoint(),(6, 8.071366078651435))
         self.assertTrue(algo.load_from_json("data/A5.json"))
         self.assertEqual(algo.centerPoint(),(40, 9.291743173960954))
+
+    def test_timeLoad1k(self):
+        algo = GraphAlgo()
 
 
 if __name__ == '__main__':

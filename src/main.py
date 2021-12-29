@@ -82,7 +82,7 @@ def check2():
     print(dist, path)
     dist, path = g_algo.shortest_path(2, 20)
     print(dist, path)
-    print("g tsp ",g_algo.TSP([1, 2, 3]))
+    print("g tsp ",g_algo.TSP([1, 2, 3]),"tsp")
     # g_algo.plot_graph()
 
 
