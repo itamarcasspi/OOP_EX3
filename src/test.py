@@ -107,8 +107,8 @@ class test(unittest.TestCase):
         algo.graph.add_edge(2, 4, 3)
         algo.graph.add_edge(4, 3, 4)
         algo.graph.add_edge(3, 5, 11)
-        #
-        # self.assertTrue(algo.TSP([0, 5]), ([0, 2, 4, 3, 5], 20))
+
+        self.assertTrue(algo.TSP([5, 0]), ([0, 2, 4, 3, 5], 20))
         # algo.graph.remove_edge(3,5)
         # self.assertTrue(algo.TSP([0, 5]), ([], -1))
 
@@ -125,26 +125,24 @@ class test(unittest.TestCase):
         g.add_edge(3, 4, 2.1)
         g.add_edge(4, 2, .5)
         algo = GraphAlgo(g)
-        print(algo.TSP([1,2,4]))
+        # print(algo.TSP([1,2,4]))
 
 
     def test_center(self):
-        g = DiGraph()  # creates an empty directed graph
-        for n in range(5):
-            g.add_node(n)
-        g.add_edge(0, 1, 1)
-        g.add_edge(0, 4, 5)
-        g.add_edge(1, 0, 1.1)
-        g.add_edge(1, 2, 1.3)
-        g.add_edge(1, 3, 1.9)
-        g.add_edge(2, 3, 1.1)
-        g.add_edge(3, 4, 2.1)
-        g.add_edge(4, 2, .5)
-        algo = GraphAlgo(g)
-        print("center is ",algo.centerPoint())
+        algo = GraphAlgo()
+        algo.load_from_json("data/A0.json")
+        self.assertEqual(algo.centerPoint(),(7, 6.806805834715163))
+        self.assertTrue(algo.load_from_json("data/A1.json"))
+        self.assertEqual(algo.centerPoint(),(8, 9.925289024973141))
+        self.assertTrue(algo.load_from_json("data/A2.json"))
+        self.assertEqual(algo.centerPoint(),(0, 7.819910602212574))
+        self.assertTrue(algo.load_from_json("data/A3.json"))
+        self.assertEqual(algo.centerPoint(),(2, 8.182236568942239))
+        self.assertTrue(algo.load_from_json("data/A4.json"))
+        self.assertEqual(algo.centerPoint(),(6, 8.071366078651435))
+        self.assertTrue(algo.load_from_json("data/A5.json"))
+        self.assertEqual(algo.centerPoint(),(40, 9.291743173960954))
 
-        # algo.load_from_json("../data/A1.json")
-        # self.assertTrue(algo.centerPoint(), 3)
 
 if __name__ == '__main__':
     unittest.main()
