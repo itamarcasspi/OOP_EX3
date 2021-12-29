@@ -40,7 +40,7 @@ class GraphAlgo(GraphAlgoInterface):
         return self.graph
 
     def load_from_json(self, file_name: str) -> bool:
-        file = open(""+file_name)
+        file = open("../"+file_name)
         graph_data = json.load(file)
         self.graph = DiGraph()
         for i in graph_data["Nodes"]:
@@ -81,7 +81,7 @@ class GraphAlgo(GraphAlgoInterface):
             graphdict["Edges"] = edges
             graphdict["Nodes"] = nodes
 
-            with open(file_name, "w") as file:
+            with open("../"+file_name, "w") as file:
                 json.dump(graphdict, fp=file)
             return True
         except:
